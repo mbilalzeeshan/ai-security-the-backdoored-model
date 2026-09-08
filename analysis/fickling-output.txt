@@ -1,0 +1,14 @@
+Week 04 — Fickling Decompilation
+Tool: fickling 0.1.12
+Sample: samples/malicious_model.pkl
+
+Command:
+fickling samples\malicious_model.pkl
+
+Observed output:
+from nt import system
+_var0 = system('cmd /c echo PAYLOAD_EXECUTED> "H:\\ZeroDay-Reapers\\Week-4\\samples\\payload_executed.txt"')
+result0 = _var0
+
+Interpretation:
+The decompiled representation shows that unpickling reconstructs the object by invoking nt.system with a command that creates a marker file. This is the hidden executable behavior embedded in the pickle sample.
