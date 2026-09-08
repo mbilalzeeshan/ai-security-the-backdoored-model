@@ -1,0 +1,29 @@
+Week 04 — Pickle Security Analysis
+Tool: picklescan 1.0.5
+Sample: samples/malicious_model_vm.pkl
+
+Command:
+picklescan -p samples/malicious_model_vm.pkl
+
+Observed output:
+H:\ZeroDay-Reapers\Week-4\samples\malicious_model.pkl: dangerous import 'nt system' FOUND
+----------- SCAN SUMMARY -----------
+Scanned files: 1
+Infected files: 1
+Suspicious globals: 0
+Dangerous globals: 1
+
+Command:
+picklescan -p samples/malicious_model.pkl -g
+
+Observed output:
+H:\ZeroDay-Reapers\Week-4\samples\malicious_model.pkl: dangerous import 'nt system' FOUND
+----------- SCAN SUMMARY -----------
+Scanned files: 1
+Infected files: 1
+Suspicious globals: 0
+Dangerous globals: 1
+All globals found:
+  * nt.system - dangerous
+
+Note: The original sample path is retained above because this is the exact console evidence captured during the assessment. A VM-specific sample was later created for controlled execution.
