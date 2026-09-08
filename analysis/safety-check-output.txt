@@ -1,0 +1,28 @@
+Week 04 — Fickling Safety Check
+Tool: fickling 0.1.12
+Sample: samples/malicious_model.pkl
+
+Command:
+fickling --check-safety samples\malicious_model.pkl
+
+Observed result:
+No console output was produced.
+
+Command:
+fickling --check-safety --print-results samples\malicious_model.pkl
+
+Observed output:
+`from nt import system` is suspicious and indicative of an overtly malicious pickle file
+Variable `_var0` is assigned value `system(...)` but unused afterward; this is suspicious and indicative of a malicious pickle file
+Warning: Fickling detected that the pickle file may be unsafe.
+
+Do not unpickle this file if it is from an untrusted source!
+
+Command:
+$LASTEXITCODE
+
+Observed result:
+1
+
+Interpretation:
+Fickling classified the sample as potentially unsafe and returned exit code 1 for the safety check.
